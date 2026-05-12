@@ -19,8 +19,10 @@
 \usepackage{booktabs}
 \usepackage{fancyhdr}
 \usepackage{xcolor}
+\usepackage{graphicx}
 
 % ── tcolorbox ───────────────────────────────────────────────
+
 \tcbuselibrary{theorems, skins, breakable}
 
 \definecolor{defblue}{RGB}{30, 90, 160}
@@ -75,6 +77,7 @@
 % ============================================================
 \begin{document}
 % ============================================================
+
 
 \maketitle
 \tableofcontents
@@ -279,6 +282,10 @@ provided:
     \item $f$ has finitely many maxima and minima per period.
 \end{enumerate}
 At a jump discontinuity at $x_0$, the series converges to the average
+\begin{remark}
+    Inverse trig functions cannot be represented by a Fourier series b/c they are 
+    not single-valued. Use Principle Branch workaround.
+\end{remark}
 $\frac{1}{2}\bigl[f(x_0^+) + f(x_0^-)\bigr]$.
  
 \subsubsection*{Complex Form}
@@ -297,6 +304,10 @@ $c_n = \frac{1}{2}(a_n - ib_n)$ and $c_{-n} = \frac{1}{2}(a_n + ib_n)$.
     Let $f(x)$ be the $2\pi$-periodic square wave with $f(x) = 1$ for
     $0 < x < \pi$ and $f(x) = -1$ for $-\pi < x < 0$. Then $a_n = 0$
     (odd function) and
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{images/sqwave.png}
+        \label{Fig: sqwave}
+    \end{center}
     \[
         b_n = \frac{2}{n\pi}(1 - \cos n\pi) =
         \begin{cases} \dfrac{4}{n\pi} & n \text{ odd} \\ 0 & n \text{ even} \end{cases}
@@ -307,6 +318,7 @@ $c_n = \frac{1}{2}(a_n - ib_n)$ and $c_{-n} = \frac{1}{2}(a_n + ib_n)$.
                + \frac{\sin 5x}{5} + \cdots \right)
     \]
 \end{example}
+
 
 \subsection{Even and Odd Functions}
 
@@ -381,8 +393,6 @@ useful for evaluating infinite series.
     \]
 \end{example}
 
-
-\subsection{Fourier Transforms}
 
 \subsection{Fourier Transforms}
  
@@ -467,6 +477,11 @@ Fourier series generalizes to the \textbf{Fourier transform pair}:
     Convolution appears naturally in linear systems: if $h(t)$ is the
     impulse response of a system and $x(t)$ is the input, the output is
     $y(t) = (h * x)(t)$.
+\end{remark}
+
+\begin{remark}
+    I will add given examples from the Final Review here after I am 
+    finished going through the chapters.
 \end{remark}
 
 
