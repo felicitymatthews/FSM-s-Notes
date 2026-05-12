@@ -1,0 +1,495 @@
+% ============================================================
+%  Math/Physics 89 — Mathematical Methods for Physicists
+%  Based on: Boas, Mathematical Methods in the Physical Sciences
+%  Chapters: 1–8, 10, 12–14 (§1–7)
+% ============================================================
+
+\documentclass[11pt, letterpaper]{article}
+
+% ── Packages ────────────────────────────────────────────────
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}          % dcases, etc.
+\usepackage{physics}            % \dv, \pdv, \grad, \curl, \div, \bra, \ket
+\usepackage{bm}                 % \bm{} for bold math
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{tcolorbox}          % colored theorem boxes
+\usepackage{booktabs}           % nice tables
+\usepackage{graphicx}
+\usepackage{import}             % for \import{subfiles/}{...}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{esint}
+
+% ── Colors ──────────────────────────────────────────────────
+\definecolor{defblue}{RGB}{30, 90, 160}
+\definecolor{thmgreen}{RGB}{20, 130, 80}
+\definecolor{exorange}{RGB}{200, 100, 20}
+\definecolor{noteGray}{RGB}{100, 100, 100}
+
+% ── tcolorbox styles ────────────────────────────────────────
+\tcbuselibrary{theorems, skins, breakable}
+
+\newtcbtheorem[number within=section]{definition}{Definition}%
+  {colback=defblue!8, colframe=defblue!60, fonttitle=\bfseries,
+   breakable}{def}
+
+\newtcbtheorem[number within=section]{theorem}{Theorem}%
+  {colback=thmgreen!8, colframe=thmgreen!60, fonttitle=\bfseries,
+   breakable}{thm}
+
+\newtcbtheorem[number within=section]{example}{Example}%
+  {colback=exorange!8, colframe=exorange!60, fonttitle=\bfseries,
+   breakable}{ex}
+
+% plain remark (no color)
+\newenvironment{remark}{\smallskip\noindent\textit{Remark.}}{\smallskip}
+
+% ── Theorem environments (plain AMS) ────────────────────────
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+% ── Common macros ───────────────────────────────────────────
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{Z}}   % use \mathbb{C} for complex numbers
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+% Re and Im
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+
+% Residue
+\renewcommand{\Res}{\operatorname{Res}}
+
+% Vector shorthand
+\newcommand{\vv}[1]{\bm{#1}}
+
+% Partial derivative shorthand (if not using physics package)
+% \renewcommand{\pd}[2]{\dfrac{\partial #1}{\partial #2}}
+
+% ── Header / Footer ─────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Math/Physics 89}
+\chead{\small \leftmark}
+\rhead{\small Boas}
+\cfoot{\small \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Title ───────────────────────────────────────────────────
+\title{%
+  \textbf{Math/Physics 89}\\[4pt]
+  \large Mathematical Methods for Physicists\\[2pt]
+  \normalsize Notes based on Boas, \textit{Mathematical Methods in the Physical Sciences}
+}
+\author{}
+\date{\today}
+
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+\maketitle
+\tableofcontents
+\newpage
+
+
+% ============================================================
+\section{Infinite Series, Power Series}   % Ch. 1
+% ============================================================
+
+\subsection{Convergence Tests}
+
+\begin{definition}{Convergence of a Series}{conv}
+  The series $\sum_{n=1}^\infty a_n$ \emph{converges} if the sequence of
+  partial sums $S_N = \sum_{n=1}^N a_n$ has a finite limit as $N\to\infty$.
+\end{definition}
+
+% ── Key tests ──
+\subsubsection*{Key Convergence Tests}
+\begin{itemize}
+  \item \textbf{Ratio test:} $\lim_{n\to\infty}|a_{n+1}/a_n| = L$.
+        Converges if $L<1$; diverges if $L>1$; inconclusive if $L=1$.
+  \item \textbf{Comparison / limit comparison}
+  \item \textbf{Integral test}
+  \item \textbf{Alternating series test (Leibniz)}
+\end{itemize}
+
+\subsection{Power Series and Radius of Convergence}
+
+\[
+  f(x) = \sum_{n=0}^\infty c_n (x - a)^n, \qquad
+  R = \frac{1}{\displaystyle\limsup_{n\to\infty} |c_n|^{1/n}}
+\]
+
+\begin{example}{Geometric Series}{geo}
+  $\sum_{n=0}^\infty x^n = \dfrac{1}{1-x}$, \quad $|x|<1$.
+\end{example}
+
+\subsection{Taylor and Maclaurin Series}
+
+% Insert standard series table here
+
+
+% ============================================================
+\section{Complex Numbers}                 % Ch. 2
+% ============================================================
+
+\subsection{Algebra of Complex Numbers}
+
+\subsection{Polar Form and De Moivre's Theorem}
+\[
+  z = r e^{i\theta} = r(\cos\theta + i\sin\theta), \qquad
+  z^n = r^n e^{in\theta}
+\]
+
+\subsection{Roots and Logarithms}
+
+\subsection{Functions of a Complex Variable}
+
+\begin{definition}{Analytic Function}{analytic}
+  $f(z)$ is \emph{analytic} at $z_0$ if $f'(z_0)$ exists in some
+  neighborhood of $z_0$.  Equivalently, the Cauchy–Riemann equations hold:
+  \[
+    \pdv{u}{x} = \pdv{v}{y}, \qquad \pdv{u}{y} = -\pdv{v}{x}
+  \]
+  where $f = u + iv$.
+\end{definition}
+
+
+% ============================================================
+\section{Linear Algebra}                  % Ch. 3
+% ============================================================
+
+\subsection{Matrices and Determinants}
+
+\subsection{Systems of Linear Equations; Row Reduction}
+
+\subsection{Eigenvalues and Eigenvectors}
+
+\begin{definition}{Characteristic Equation}{chareq}
+  The eigenvalues $\lambda$ of $A$ satisfy $\det(A - \lambda I) = 0$.
+\end{definition}
+
+\subsection{Diagonalization}
+
+\begin{theorem}{Spectral Theorem for Real Symmetric Matrices}{spectral}
+  Every real symmetric matrix $A$ can be orthogonally diagonalized:
+  $A = C D C^T$ where $C$ is orthogonal and $D$ is diagonal.
+  Eigenvectors for distinct eigenvalues are orthogonal.
+\end{theorem}
+
+\subsection{Hermitian Matrices and Unitary Transformations}
+
+\subsection{Normal Modes (Application)}
+
+
+% ============================================================
+\section{Partial Differentiation}         % Ch. 4
+% ============================================================
+
+\subsection{Chain Rule; Implicit Differentiation}
+
+\subsection{Stationary Points; Lagrange Multipliers}
+
+\subsection{Change of Variables; Jacobians}
+
+\subsection{Thermodynamic Relations (Application)}
+
+
+% ============================================================
+\section{Multiple Integrals}              % Ch. 5
+% ============================================================
+
+\subsection{Double and Triple Integrals}
+
+\subsection{Change of Variables}
+\[
+  \iint_R f\,dx\,dy
+  = \iint_{R'} f(x(u,v),\,y(u,v))\,\left|\frac{\partial(x,y)}{\partial(u,v)}\right|du\,dv
+\]
+
+\subsection{Surface Area and Surface Integrals}
+
+
+% ============================================================
+\section{Vector Analysis}                 % Ch. 6
+% ============================================================
+
+\subsection{Gradient, Divergence, and Curl}
+\[
+  \grad f, \qquad \div \vv{F}, \qquad \curl \vv{F}
+\]
+
+\subsection{Line Integrals; Conservative Fields}
+
+\subsection{Green's Theorem}
+\[
+  \oint_C (M\,dx + N\,dy) = \iint_D \left(\pdv{N}{x}-\pdv{M}{y}\right)dA
+\]
+
+\subsection{Stokes' Theorem}
+\[
+  \oint_C \vv{F}\cdot d\vv{r} = \iint_S (\curl\vv{F})\cdot d\vv{A}
+\]
+
+\subsection{Divergence Theorem}
+\[
+  \iint_S \vv{F}\cdot d\vv{A} = \iiint_V (\div\vv{F})\,dV
+\]
+
+
+% ============================================================
+\section{Fourier Series and Transforms}   % Ch. 7
+% ============================================================
+
+\subsection{Fourier Series}
+\[
+  f(x) = \frac{a_0}{2} + \sum_{n=1}^\infty \left(a_n\cos\frac{n\pi x}{L}
+         + b_n\sin\frac{n\pi x}{L}\right)
+\]
+\[
+  a_n = \frac{1}{L}\int_{-L}^{L} f(x)\cos\frac{n\pi x}{L}\,dx, \qquad
+  b_n = \frac{1}{L}\int_{-L}^{L} f(x)\sin\frac{n\pi x}{L}\,dx
+\]
+
+\subsection{Even and Odd Functions; Half-Range Series}
+
+\subsection{Parseval's Theorem}
+\[
+  \frac{1}{L}\int_{-L}^{L}[f(x)]^2\,dx
+  = \frac{a_0^2}{2} + \sum_{n=1}^\infty(a_n^2 + b_n^2)
+\]
+
+\subsection{Fourier Transform}
+\[
+  \hat{f}(\omega) = \int_{-\infty}^\infty f(t)\,e^{-i\omega t}\,dt, \qquad
+  f(t) = \frac{1}{2\pi}\int_{-\infty}^\infty \hat{f}(\omega)\,e^{i\omega t}\,d\omega
+\]
+
+\subsection{Convolution Theorem}
+
+
+% ============================================================
+\section{Ordinary Differential Equations} % Ch. 8
+% ============================================================
+
+\subsection{First-Order ODEs}
+\begin{itemize}
+  \item Separable
+  \item Linear: integrating factor $\mu = e^{\int P\,dx}$
+  \item Exact
+\end{itemize}
+
+\subsection{Second-Order Linear ODEs with Constant Coefficients}
+
+\subsection{Power Series Solutions}
+
+\subsection{Frobenius Method (Regular Singular Points)}
+
+\begin{definition}{Regular Singular Point}{rsp}
+  $x = x_0$ is a \emph{regular singular point} of
+  $y'' + P(x)y' + Q(x)y = 0$ if $(x-x_0)P(x)$ and $(x-x_0)^2 Q(x)$
+  are analytic at $x_0$.
+\end{definition}
+
+% Indicial equation, cases for roots
+
+
+% ============================================================
+\section{Calculus of Variations}          % Ch. 9 — omitted per syllabus
+% ============================================================
+% (Not on the exam — placeholder only)
+
+
+% ============================================================
+\section{Tensor Analysis}                 % Ch. 10
+% ============================================================
+
+\subsection{Cartesian Tensors: Transformation Law}
+\[
+  T'_{ij} = \sum_{k,l} a_{ik}\,a_{jl}\,T_{kl}
+\]
+
+\subsection{Symmetric and Antisymmetric Tensors}
+\[
+  T_{ij} = \underbrace{\tfrac{1}{2}(T_{ij}+T_{ji})}_{\text{symmetric}}
+          + \underbrace{\tfrac{1}{2}(T_{ij}-T_{ji})}_{\text{antisymmetric}}
+\]
+
+\subsection{Contraction; Kronecker Delta and Levi-Civita Symbol}
+\[
+  \varepsilon_{ijk}\,\varepsilon_{ilm} = \delta_{jl}\delta_{km} - \delta_{jm}\delta_{kl}
+\]
+
+\subsection{Isotropic Tensors; Physical Examples}
+
+
+% ============================================================
+%  Ch. 11 (Special Functions) — omitted per syllabus
+% ============================================================
+
+
+% ============================================================
+\section{Legendre Polynomials and Bessel Functions} % Ch. 12 (no spherical harmonics)
+% ============================================================
+
+\subsection{Legendre's Equation and Polynomials}
+\[
+  (1-x^2)y'' - 2xy' + \ell(\ell+1)y = 0
+\]
+
+\subsubsection*{Orthogonality}
+\[
+  \int_{-1}^{1} P_m(x)\,P_n(x)\,dx = \frac{2}{2n+1}\,\delta_{mn}
+\]
+
+\subsubsection*{Generating Function and Rodrigues' Formula}
+\[
+  P_n(x) = \frac{1}{2^n n!}\dv[n]{}{x}(x^2-1)^n
+\]
+
+\subsection{Expansion in Legendre Series}
+
+\subsection{Bessel's Equation and Bessel Functions}
+\[
+  x^2 y'' + xy' + (x^2 - \nu^2)y = 0, \qquad
+  y = AJ_\nu(x) + BJ_{-\nu}(x) \quad (\nu \notin \mathbb{Z})
+\]
+
+\subsubsection*{Recurrence Relations and Orthogonality}
+\[
+  \int_0^1 x\,J_\nu(\alpha_{nm} x)\,J_\nu(\alpha_{nk} x)\,dx
+  = \tfrac{1}{2}[J_{\nu+1}(\alpha_{nm})]^2 \delta_{mk}
+\]
+where $\alpha_{nm}$ are the zeros of $J_\nu$.
+
+\subsection{Applications: Vibrating Circular Membrane, Heat in a Cylinder}
+
+
+% ============================================================
+\section{Partial Differential Equations}  % Ch. 13
+% ============================================================
+
+\subsection{Separation of Variables}
+
+\subsubsection*{Heat Equation}
+\[
+  \pdv{u}{t} = \kappa\,\pdv[2]{u}{x}
+\]
+
+\subsubsection*{Wave Equation}
+\[
+  \pdv[2]{u}{t} = c^2\nabla^2 u
+\]
+
+\subsubsection*{Laplace's Equation}
+\[
+  \nabla^2 u = 0
+\]
+
+\subsection{Boundary Conditions (Dirichlet, Neumann, Robin)}
+
+\subsection{Sturm–Liouville Theory}
+
+\begin{theorem}{Sturm–Liouville}{SL}
+  The eigenvalue problem
+  \[
+    \dv{}{x}\!\left[p(x)\dv{y}{x}\right] - q(x)y + \lambda w(x)y = 0
+  \]
+  with appropriate boundary conditions has real eigenvalues
+  $\lambda_1 < \lambda_2 < \cdots$ with orthogonal eigenfunctions
+  with weight $w(x)$:
+  \[
+    \int_a^b y_m(x)\,y_n(x)\,w(x)\,dx = 0, \quad m\neq n.
+  \]
+\end{theorem}
+
+\subsection{2D and 3D Problems; Circular and Cylindrical Geometries}
+
+
+% ============================================================
+\section{Functions of a Complex Variable} % Ch. 14
+% ============================================================
+
+\subsection{Analytic Functions; Cauchy–Riemann Equations (revisited)}
+
+\subsection{Cauchy's Integral Theorem and Formula}
+\[
+  \oint_C f(z)\,dz = 0 \quad \text{($f$ analytic inside $C$)}
+\]
+\[
+  f^{(n)}(z_0) = \frac{n!}{2\pi i}\oint_C \frac{f(z)}{(z-z_0)^{n+1}}\,dz
+\]
+
+\subsection{Laurent Series and Singularities}
+\[
+  f(z) = \sum_{n=-\infty}^{\infty} c_n (z-z_0)^n
+\]
+\begin{itemize}
+  \item \textbf{Removable singularity:} $c_n = 0$ for all $n < 0$
+  \item \textbf{Pole of order $m$:} $c_{-m}\neq 0$, $c_n=0$ for $n<-m$
+  \item \textbf{Essential singularity:} infinitely many negative powers
+\end{itemize}
+
+\subsection{Residue Theorem}
+\[
+  \oint_C f(z)\,dz = 2\pi i \sum_k \Res(f, z_k)
+\]
+\[
+  \Res(f, z_0) = c_{-1} = \lim_{z\to z_0} \frac{1}{(m-1)!}
+  \dv[m-1]{}{z}\!\left[(z-z_0)^m f(z)\right]
+  \quad \text{(pole of order }m\text{)}
+\]
+
+\subsection{Evaluation of Real Integrals by Contour Integration}
+
+\subsubsection*{Type I: $\int_{-\infty}^{\infty} R(x)\,dx$}
+Close in upper half-plane (UHP); use residues at poles with $\Im z > 0$.
+
+\subsubsection*{Type II: $\int_0^{2\pi} R(\cos\theta,\sin\theta)\,d\theta$}
+Substitute $z = e^{i\theta}$, $d\theta = dz/(iz)$.
+
+\subsubsection*{Type III: Integrals with $e^{ix}$ (Jordan's Lemma)}
+
+\subsection{Conformal Mapping (if covered in class)}
+
+
+% ============================================================
+%  Reference Sheet
+% ============================================================
+\newpage
+\appendix
+\section{Quick Reference}
+
+\subsection*{Special Polynomials}
+\[
+  P_0 = 1,\quad P_1 = x,\quad P_2 = \tfrac{1}{2}(3x^2-1),\quad
+  P_3 = \tfrac{1}{2}(5x^3-3x)
+\]
+
+\subsection*{Bessel Functions (small $x$)}
+\[
+  J_0(x) \approx 1 - \frac{x^2}{4} + \cdots, \qquad
+  J_1(x) \approx \frac{x}{2} - \frac{x^3}{16} + \cdots
+\]
+First zeros: $J_0$: $2.405,\,5.520,\,\ldots$;\quad $J_1$: $3.832,\,7.016,\,\ldots$
+
+\subsection*{Gamma Function}
+\[
+  \Gamma(n+1) = n\,\Gamma(n), \quad \Gamma(1)=1, \quad \Gamma\!\left(\tfrac{1}{2}\right)=\sqrt{\pi}
+\]
+
+\subsection*{Standard Fourier Pairs}
+\[
+  e^{-a|t|} \;\longleftrightarrow\; \frac{2a}{a^2+\omega^2}, \qquad
+  e^{-at^2} \;\longleftrightarrow\; \sqrt{\frac{\pi}{a}}\,e^{-\omega^2/(4a)}
+\]
+
+\end{document}
