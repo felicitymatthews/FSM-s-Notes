@@ -57,7 +57,7 @@
 % ── Header / Footer ─────────────────────────────────────────
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{\small Math/Physics 89}
+\lhead{\small Physics 89}
 \chead{\small \leftmark}
 \rhead{\small Boas}
 \cfoot{\small \thepage}
@@ -250,29 +250,224 @@
 % ============================================================
 \section{Fourier Series and Transforms}        % Ch. 7
 % ============================================================
+\begin{abstract}
+    Problems involving vibrations or oscillations occur freuquently in physics and engineering. The Fourier series is a tool used to approximate periodic functions with sines and cosines.
+\end{abstract}
 
 \subsection{Fourier Series}
+A function $f(x)$ that is periodic with period $2L$ can be written as 
+\[
+    f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty}
+    \left( a_n \cos\frac{n\pi x}{L} + b_n \sin\frac{n\pi x}{L} \right)
+\]
+where the \textbf{Fourier coefficients} are given by 
 
-
+\[
+    a_n = \frac{1}{L}\int_{-L}^{L} f(x)\cos\frac{n\pi x}{L}\,dx, \qquad
+    b_n = \frac{1}{L}\int_{-L}^{L} f(x)\sin\frac{n\pi x}{L}\,dx
+\]
+\begin{remark}
+    The term $a_0/2$ is the average value of $f$ over one period.
+\end{remark}
+\subsubsection*{Dirichlet Conditions}
+ 
+The Fourier series converges to $f(x)$ at all points where $f$ is continuous,
+provided:
+\begin{enumerate}[(i)]
+    \item $f$ is periodic,
+    \item $f$ is piecewise continuous on $[-L, L]$,
+    \item $f$ has finitely many maxima and minima per period.
+\end{enumerate}
+At a jump discontinuity at $x_0$, the series converges to the average
+$\frac{1}{2}\bigl[f(x_0^+) + f(x_0^-)\bigr]$.
+ 
+\subsubsection*{Complex Form}
+ 
+The Fourier series can equivalently be written as
+ 
+\[
+    f(x) = \sum_{n=-\infty}^{\infty} c_n\, e^{in\pi x/L}, \qquad
+    c_n = \frac{1}{2L}\int_{-L}^{L} f(x)\,e^{-in\pi x/L}\,dx
+\]
+ 
+The real and complex coefficients are related by
+$c_n = \frac{1}{2}(a_n - ib_n)$ and $c_{-n} = \frac{1}{2}(a_n + ib_n)$.
+ 
+\begin{example}{Square wave}{sqwave}
+    Let $f(x)$ be the $2\pi$-periodic square wave with $f(x) = 1$ for
+    $0 < x < \pi$ and $f(x) = -1$ for $-\pi < x < 0$. Then $a_n = 0$
+    (odd function) and
+    \[
+        b_n = \frac{2}{n\pi}(1 - \cos n\pi) =
+        \begin{cases} \dfrac{4}{n\pi} & n \text{ odd} \\ 0 & n \text{ even} \end{cases}
+    \]
+    so
+    \[
+        f(x) = \frac{4}{\pi}\left(\sin x + \frac{\sin 3x}{3}
+               + \frac{\sin 5x}{5} + \cdots \right)
+    \]
+\end{example}
 
 \subsection{Even and Odd Functions}
 
-
+\begin{definition}{Even and Odd Functions}{evenodd}
+    A function is \emph{even} if $f(-x) = f(x)$ and \emph{odd} if
+    $f(-x) = -f(x)$.
+\end{definition}
+ 
+Key consequences for Fourier series on $[-L, L]$:
+ 
+\begin{itemize}
+    \item \textbf{Even} $f$: all $b_n = 0$; the series contains only cosines.
+          \[
+              a_n = \frac{2}{L}\int_0^L f(x)\cos\frac{n\pi x}{L}\,dx
+          \]
+    \item \textbf{Odd} $f$: all $a_n = 0$; the series contains only sines.
+          \[
+              b_n = \frac{2}{L}\int_0^L f(x)\sin\frac{n\pi x}{L}\,dx
+          \]
+\end{itemize}
+ 
+Useful identities: even $\times$ even = even; odd $\times$ odd = even;
+even $\times$ odd = odd.
 
 \subsection{Half-Range Series}
-
-
+Given $f(x)$ defined only on $[0, L]$, we can extend it to $[-L, L]$ in
+two ways and obtain a \emph{half-range} series:
+ 
+\begin{itemize}
+    \item \textbf{Half-range cosine series} (even extension):
+          \[
+              f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty}
+              a_n\cos\frac{n\pi x}{L}, \qquad
+              a_n = \frac{2}{L}\int_0^L f(x)\cos\frac{n\pi x}{L}\,dx
+          \]
+    \item \textbf{Half-range sine series} (odd extension):
+          \[
+              f(x) = \sum_{n=1}^{\infty}
+              b_n\sin\frac{n\pi x}{L}, \qquad
+              b_n = \frac{2}{L}\int_0^L f(x)\sin\frac{n\pi x}{L}\,dx
+          \]
+\end{itemize}
+ 
+\begin{remark}
+    The choice of extension affects convergence at the endpoints $x = 0$
+    and $x = L$. The two series are generally different functions outside
+    $[0, L]$.
+\end{remark}
+ 
 
 \subsection{Parseval's Theorem}
 
+\begin{theorem}{Parseval's Theorem}{parseval}
+    If $f(x)$ has Fourier coefficients $a_n$, $b_n$ on $[-L, L]$, then
+    \[
+        \frac{1}{L}\int_{-L}^{L} [f(x)]^2\,dx
+        = \frac{a_0^2}{2} + \sum_{n=1}^{\infty}(a_n^2 + b_n^2)
+    \]
+\end{theorem}
+ 
+Parseval's theorem equates the \emph{energy} (mean-square value) of $f$
+to the sum of the squared amplitudes of its frequency components. It is
+useful for evaluating infinite series.
+ 
+\begin{example}{A classic sum}{parseval-ex}
+    The Fourier series of $f(x) = x$ on $[-\pi,\pi]$ gives $b_n = 2(-1)^{n+1}/n$.
+    Applying Parseval's theorem:
+    \[
+        \frac{1}{\pi}\int_{-\pi}^{\pi} x^2\,dx = \sum_{n=1}^{\infty}\frac{4}{n^2}
+        \implies \frac{2\pi^2}{3} = 4\sum_{n=1}^{\infty}\frac{1}{n^2}
+        \implies \sum_{n=1}^{\infty}\frac{1}{n^2} = \frac{\pi^2}{6}
+    \]
+\end{example}
 
 
 \subsection{Fourier Transforms}
 
-
+\subsection{Fourier Transforms}
+ 
+For a non-periodic function $f(t)$ defined on $(-\infty, \infty)$, the
+Fourier series generalizes to the \textbf{Fourier transform pair}:
+ 
+\[
+    \hat{f}(\omega) = \int_{-\infty}^{\infty} f(t)\,e^{-i\omega t}\,dt
+    \qquad \text{(forward transform)}
+\]
+\[
+    f(t) = \frac{1}{2\pi}\int_{-\infty}^{\infty}
+    \hat{f}(\omega)\,e^{i\omega t}\,d\omega
+    \qquad \text{(inverse transform)}
+\]
+ 
+\subsubsection*{Key Properties}
+ 
+\begin{center}
+\begin{tabular}{ll}
+    \toprule
+    Property & Statement \\
+    \midrule
+    Linearity      & $\widehat{af + bg} = a\hat{f} + b\hat{g}$ \\[4pt]
+    Time shift     & $\widehat{f(t-t_0)} = e^{-i\omega t_0}\hat{f}(\omega)$ \\[4pt]
+    Frequency shift & $\widehat{e^{i\omega_0 t}f(t)} = \hat{f}(\omega - \omega_0)$ \\[4pt]
+    Differentiation & $\widehat{f'(t)} = i\omega\,\hat{f}(\omega)$ \\[4pt]
+    Scaling        & $\widehat{f(at)} = \tfrac{1}{|a|}\hat{f}(\omega/a)$ \\
+    \bottomrule
+\end{tabular}
+\end{center}
+ 
+\subsubsection*{Common Transform Pairs}
+ 
+\[
+    e^{-a|t|} \;\longleftrightarrow\; \frac{2a}{a^2 + \omega^2}, \qquad a > 0
+\]
+\[
+    e^{-at^2} \;\longleftrightarrow\; \sqrt{\frac{\pi}{a}}\,e^{-\omega^2/(4a)},
+    \qquad a > 0
+\]
+\[
+    \delta(t) \;\longleftrightarrow\; 1, \qquad
+    1 \;\longleftrightarrow\; 2\pi\,\delta(\omega)
+\]
+ 
+\begin{remark}
+    Different textbooks use different conventions for the factor of $2\pi$
+    and the sign in the exponent. Boas uses the convention above.
+\end{remark}
 
 \subsection{Convolution}
-
+ 
+\begin{definition}{Convolution}{conv}
+    The \emph{convolution} of two functions $f$ and $g$ is
+    \[
+        (f * g)(t) = \int_{-\infty}^{\infty} f(\tau)\,g(t - \tau)\,d\tau
+    \]
+\end{definition}
+ 
+\begin{theorem}{Convolution Theorem}{convthm}
+    The Fourier transform of a convolution is the product of the transforms:
+    \[
+        \widehat{f * g}(\omega) = \hat{f}(\omega)\cdot\hat{g}(\omega)
+    \]
+    Equivalently, the transform of a product is (up to $2\pi$) the
+    convolution of the transforms:
+    \[
+        \widehat{f \cdot g}(\omega)
+        = \frac{1}{2\pi}\bigl(\hat{f} * \hat{g}\bigr)(\omega)
+    \]
+\end{theorem}
+ 
+\subsubsection*{Properties of Convolution}
+\begin{itemize}
+    \item Commutative: $f * g = g * f$
+    \item Associative: $f * (g * h) = (f * g) * h$
+    \item Distributive: $f * (g + h) = f*g + f*h$
+\end{itemize}
+ 
+\begin{remark}
+    Convolution appears naturally in linear systems: if $h(t)$ is the
+    impulse response of a system and $x(t)$ is the input, the output is
+    $y(t) = (h * x)(t)$.
+\end{remark}
 
 
 \newpage
