@@ -1,0 +1,461 @@
+% ============================================================
+%  Math/Physics 89 — Personal Notes
+%  Boas: Mathematical Methods in the Physical Sciences
+%  Chapters: 1–8, 10, 12–14 (§1–7)
+% ============================================================
+
+\documentclass[11pt, letterpaper]{article}
+
+% ── Packages ────────────────────────────────────────────────
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{mathtools}
+\usepackage{physics}
+\usepackage{bm}
+\usepackage{esint}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+
+% ── tcolorbox ───────────────────────────────────────────────
+\tcbuselibrary{theorems, skins, breakable}
+
+\definecolor{defblue}{RGB}{30, 90, 160}
+\definecolor{thmgreen}{RGB}{20, 130, 80}
+\definecolor{exorange}{RGB}{200, 100, 20}
+
+\newtcbtheorem[number within=section]{definition}{Definition}%
+  {colback=defblue!8, colframe=defblue!60, fonttitle=\bfseries, breakable}{def}
+
+\newtcbtheorem[number within=section]{theorem}{Theorem}%
+  {colback=thmgreen!8, colframe=thmgreen!60, fonttitle=\bfseries, breakable}{thm}
+
+\newtcbtheorem[number within=section]{example}{Example}%
+  {colback=exorange!8, colframe=exorange!60, fonttitle=\bfseries, breakable}{ex}
+
+% ── AMS environments ────────────────────────────────────────
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+\newenvironment{remark}{\smallskip\noindent\textit{Remark.}}{\smallskip}
+
+% ── Macros ──────────────────────────────────────────────────
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\vv}[1]{\bm{#1}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Res}{\operatorname{Res}}
+
+% ── Header / Footer ─────────────────────────────────────────
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small Math/Physics 89}
+\chead{\small \leftmark}
+\rhead{\small Boas}
+\cfoot{\small \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ── Title ───────────────────────────────────────────────────
+\title{%
+  \textbf{Textbook — Notes}\\[4pt]
+  \large Boas: \textit{Mathematical Methods in the Physical Sciences}
+}
+\author{}
+\date{\today}
+
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+\maketitle
+\tableofcontents
+\newpage
+
+
+% ============================================================
+\section{Infinite Series, Power Series}        % Ch. 1
+% ============================================================
+
+\subsection{Convergence and Divergence}
+
+
+
+\subsection{Convergence Tests}
+
+
+
+\subsection{Power Series}
+
+
+
+\subsection{Taylor and Maclaurin Series}
+
+
+
+\subsection{Binomial Series}
+
+
+
+\newpage
+% ============================================================
+\section{Complex Numbers}                      % Ch. 2
+% ============================================================
+
+\subsection{Complex Algebra}
+
+
+
+\subsection{Polar Form and Euler's Formula}
+
+
+
+\subsection{Powers and Roots}
+
+
+
+\subsection{The Complex Plane; Sets}
+
+
+
+\subsection{Complex Functions}
+
+
+
+\subsection{Cauchy--Riemann Equations}
+
+
+
+\newpage
+% ============================================================
+\section{Linear Algebra}                       % Ch. 3
+% ============================================================
+
+\subsection{Matrices and Determinants}
+
+
+
+\subsection{Linear Systems; Row Reduction}
+
+
+
+\subsection{Vector Spaces and Subspaces}
+
+
+
+\subsection{Eigenvalues and Eigenvectors}
+
+
+
+\subsection{Diagonalization}
+
+
+
+\subsection{Hermitian and Unitary Matrices}
+
+
+
+\subsection{Normal Modes (Application)}
+
+
+
+\newpage
+% ============================================================
+\section{Partial Differentiation}              % Ch. 4
+% ============================================================
+
+\subsection{Partial Derivatives and Chain Rule}
+
+
+
+\subsection{Total Differentials}
+
+
+
+\subsection{Implicit Differentiation}
+
+
+
+\subsection{Stationary Points; Max/Min}
+
+
+
+\subsection{Lagrange Multipliers}
+
+
+
+\subsection{Change of Variables; Jacobians}
+
+
+
+\newpage
+% ============================================================
+\section{Multiple Integrals}                   % Ch. 5
+% ============================================================
+
+\subsection{Double and Triple Integrals}
+
+
+
+\subsection{Change of Variables}
+
+
+
+\subsection{Surface Area}
+
+
+
+\subsection{Surface Integrals}
+
+
+
+\newpage
+% ============================================================
+\section{Vector Analysis}                      % Ch. 6
+% ============================================================
+
+\subsection{Gradient, Divergence, and Curl}
+
+
+
+\subsection{Line Integrals}
+
+
+
+\subsection{Green's Theorem}
+
+
+
+\subsection{Stokes' Theorem}
+
+
+
+\subsection{Divergence Theorem}
+
+
+
+\subsection{Potentials}
+
+
+
+\newpage
+% ============================================================
+\section{Fourier Series and Transforms}        % Ch. 7
+% ============================================================
+
+\subsection{Fourier Series}
+
+
+
+\subsection{Even and Odd Functions}
+
+
+
+\subsection{Half-Range Series}
+
+
+
+\subsection{Parseval's Theorem}
+
+
+
+\subsection{Fourier Transforms}
+
+
+
+\subsection{Convolution}
+
+
+
+\newpage
+% ============================================================
+\section{Ordinary Differential Equations}      % Ch. 8
+% ============================================================
+
+\subsection{First-Order ODEs}
+
+
+
+\subsection{Second-Order Linear ODEs}
+
+
+
+\subsection{Variation of Parameters}
+
+
+
+\subsection{Power Series Solutions}
+
+
+
+\subsection{Frobenius Method}
+
+
+
+\subsection{Bessel's Equation (intro)}
+
+
+
+\newpage
+% ============================================================
+\section{Tensor Analysis}                      % Ch. 10
+% ============================================================
+
+\subsection{Cartesian Tensors; Transformation Law}
+
+
+
+\subsection{Tensor Algebra}
+
+
+
+\subsection{Symmetric and Antisymmetric Tensors}
+
+
+
+\subsection{Kronecker Delta and Levi-Civita Symbol}
+
+
+
+\subsection{Isotropic Tensors}
+
+
+
+\subsection{Physical Applications}
+
+
+
+\newpage
+% ============================================================
+\section{Series Solutions and Special Functions} % Ch. 12 (no spherical harmonics)
+% ============================================================
+
+\subsection{Legendre's Equation}
+
+
+
+\subsection{Legendre Polynomials}
+
+
+
+\subsection{Orthogonality and Expansion}
+
+
+
+\subsection{Bessel's Equation}
+
+
+
+\subsection{Bessel Functions \(J_\nu\) and \(Y_\nu\)}
+
+
+
+\subsection{Orthogonality of Bessel Functions}
+
+
+
+\subsection{Applications}
+
+
+
+\newpage
+% ============================================================
+\section{Partial Differential Equations}        % Ch. 13
+% ============================================================
+
+\subsection{Separation of Variables}
+
+
+
+\subsection{Heat Equation}
+
+
+
+\subsection{Wave Equation}
+
+
+
+\subsection{Laplace's Equation}
+
+
+
+\subsection{Boundary Conditions}
+
+
+
+\subsection{Sturm--Liouville Theory}
+
+
+
+\subsection{2D and 3D Problems}
+
+
+
+\newpage
+% ============================================================
+\section{Functions of a Complex Variable}       % Ch. 14
+% ============================================================
+
+\subsection{Analytic Functions (revisited)}
+
+
+
+\subsection{Contour Integrals}
+
+
+
+\subsection{Cauchy's Theorem and Integral Formula}
+
+
+
+\subsection{Laurent Series}
+
+
+
+\subsection{Singularities and Residues}
+
+
+
+\subsection{Residue Theorem}
+
+
+
+\subsection{Evaluation of Real Integrals}
+
+
+
+\newpage
+% ============================================================
+\appendix
+\section{Formula Sheet}
+% ============================================================
+
+\subsection*{Legendre Polynomials}
+
+
+
+\subsection*{Bessel Function Zeros}
+
+
+
+\subsection*{Gamma Function}
+
+
+
+\subsection*{Common Fourier Transforms}
+
+
+
+\subsection*{Vector Identities}
+
+
+
+\end{document}
